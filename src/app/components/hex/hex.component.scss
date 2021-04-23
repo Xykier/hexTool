@@ -1,0 +1,28 @@
+:host {
+  position: relative;
+  width: 6em;
+  height: 10.2em;
+  border-radius: 1em;
+  border: 1px solid black;
+  background: grey;
+  transform: rotate(-90deg);
+  margin-right: 4.61538em;
+
+  &::before,
+  &::after {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    background: inherit;
+    content: '';
+  }
+
+  &::before {
+    transform: rotate(60deg);
+  }
+
+  &::after {
+    transform: rotate(-60deg);
+  }
+}

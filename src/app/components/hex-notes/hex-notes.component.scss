@@ -1,0 +1,33 @@
+:host {
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .icon-area {
+      .color-picker {
+        width: 20px;
+      }
+
+      .icon-selection {
+        mat-icon {
+          position: relative;
+          top: 5px;
+        }
+      }
+    }
+  }
+  .container {
+    display: flex;
+    height: 350px;
+
+    .description {
+      width: 100%;
+    }
+  }
+
+  [mat-dialog-actions] {
+    display: flex;
+    justify-content: space-between;
+  }
+}

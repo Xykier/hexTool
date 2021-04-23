@@ -1,0 +1,30 @@
+<!-- <div class="container">
+  <div *ngFor="let h of hArr; let i = index" [class]="i % 2 === 0 ? 'even' : 'odd'">
+    <ht-hex *ngFor="let w of wArr; let j = index"></ht-hex>
+  </div>
+</div> -->
+<mat-slide-toggle [(ngModel)]="isHighlightToggle">Highlight filled</mat-slide-toggle>
+
+<div class="container">
+  <img [src]="hexMap?.bg" #Image />
+  <svg class="grid" #HexGrid>
+    <g *ngFor="let hex of hexes" [attr.transform]="'translate(' + hex.offsetX + ', ' + hex.offsetY + ')'">
+      <g class="hex"
+        (click)="hexClick(hex)"
+        [matTooltip]="hex.x + ', ' + hex.y + (hexMap.hexes[hex.x + ',' + hex.y] ? '&#13;' + hexMap.hexes[hex.x + ',' + hex.y].title : '')"
+        matTooltipPosition="above"
+        matTooltipClass="multiline-tooltip">
+        <polygon [attr.points]="hexPoints"
+          stroke="black"
+          fill-opacity="50%"
+          [attr.fill]="this.selectedHex === hex ? 'rgb(255, 255, 0)' : isHighlightToggle && hexMap.hexes[hex.x + ',' + hex.y] ? 'rgb(43, 144, 184)' : 'transparent'"></polygon>
+        <text *ngIf="hexMap.hexes[hex.x + ',' + hex.y]?.icon"
+              x="6"
+              y="39"
+              class="gi-as"
+              [attr.fill]="hexMap.hexes[hex.x + ',' + hex.y]?.icon?.color"
+              [innerHTML]="gameFont[hexMap.hexes[hex.x + ',' + hex.y]?.icon?.name || '']"></text>
+      </g>
+    </g>
+  </svg>
+</div>

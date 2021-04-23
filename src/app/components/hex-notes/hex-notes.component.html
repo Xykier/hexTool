@@ -1,0 +1,67 @@
+<div mat-dialog-title class="title" cdkDrag cdkDragRootElement=".cdk-overlay-pane" >
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="hex.title" placeholder="Title">
+  </mat-form-field>
+  <div class="icon-area">
+    <mat-form-field class="color-picker">
+      <input type="color" aria-label="Icon Color" matInput [(ngModel)]="hex?.icon.color" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Icon</mat-label>
+      <mat-icon [style.color]="hex?.icon?.color || 'black'" matPrefix [class]="iconSearchControl.value"></mat-icon>
+      <input type="text"
+              placeholder="Search icon"
+              aria-label="Icon"
+              matInput
+              [formControl]="iconSearchControl"
+              [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectName($event)">
+        <mat-option *ngFor="let o of filteredOptions | async" [value]="o.name"><i class="gi-" [innerHTML]="o.value"></i></mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+</div>
+
+<div mat-dialog-content class="container">
+  <mat-tab-group>
+    <mat-tab label="Description">
+      <mat-form-field class="description">
+        <mat-label>Hex Description</mat-label>
+        <textarea matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  [(ngModel)]="hex.description"></textarea>
+      </mat-form-field>
+    </mat-tab>
+    <mat-tab label="Random Tables">
+      <mat-form-field class="description">
+        <mat-label>Encounters</mat-label>
+        <textarea matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  [(ngModel)]="hex.randomEncounters"></textarea>
+      </mat-form-field>
+    </mat-tab>
+    <mat-tab label="Notes">
+      <mat-form-field class="description">
+        <mat-label>Notes</mat-label>
+        <textarea matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  [(ngModel)]="hex.notes"></textarea>
+      </mat-form-field>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<div mat-dialog-actions>
+  <div class="safe-buttons">
+    <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+    <button mat-button color="basic" (click)="onCancel()">Cancel</button>
+  </div>
+  <button mat-button color="warn" (click)="deleteHex()">Delete</button>
+</div>
