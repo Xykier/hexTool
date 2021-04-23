@@ -9,7 +9,8 @@ import { IMap } from '../map.interface';
   providedIn: 'root'
 })
 export class MapService {
-  readonly baseUrl = 'http://192.168.0.125:3000/map';
+  // readonly baseUrl = 'http://192.168.0.125:3000/map';
+  readonly baseUrl = 'https://hextool-be.herokuapp.com/map';
 
   constructor(private http: HttpClient) {}
 

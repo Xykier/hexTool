@@ -9,7 +9,9 @@ import fontJSON from '../../fonts/gi.json';
   providedIn: 'root'
 })
 export class HexService {
-  readonly baseUrl = 'http://192.168.0.125:3000/hex';
+  // readonly baseUrl = 'http://192.168.0.125:3000/hex';
+  readonly baseUrl = 'https://hextool-be.herokuapp.com/hex';
+
   allIcons: Array<any>;
 
   constructor(private http: HttpClient) {
